@@ -1,0 +1,20 @@
+{
+  "name": "infoshop",
+  "version": "1.0.0",
+  "description": "Easy sales  in your infobusiness. Just install this project and will get more and more clients everyday. Simple uses, perfect quality, good documentation. We proud our product and hope your will enjoying our work. Good luck!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/momonomonoto/infoshop.git"
+  },
+  "keywords": ["infobusiness", "infoshop"],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/momonomonoto/infoshop/issues"
+  },
+  "homepage": "https://github.com/momonomonoto/infoshop#readme"
+}
