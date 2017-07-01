@@ -1,4 +1,11 @@
 import React from 'react';
+import AppBar from 'material-ui/AppBar';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-export default () => <h1>Hello Infoshop!</h1>;
+export default () => (
+    <AppBar
+        title="Title"
+        iconClassNameRight="muidocs-icon-navigation-expand-more"
+    />
+);
 
