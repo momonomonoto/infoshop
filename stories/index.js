@@ -136,8 +136,6 @@ storiesOf('Forms', module)
         </div>)
 
 
-
-
 storiesOf('Goods', module)
     .addDecorator(MuiTheme)
     .add('AppBar', () => <Hello />)
