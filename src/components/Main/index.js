@@ -4,88 +4,39 @@ import Rx from "rx";
 import RxDOM from "rx-dom";
 import 'rxjs/add/operator/debounceTime';
 
-
-
-const searchGit = (value) => {
-    console.log(value,'value');
-     let arr = Rx.DOM
-        .ajax({
-            url: `https://api.github.com/users/${value}`,
-            async: true
-        });
-     arr.subscribe(x=>console.log(x,'x'));
-}
-
-
-const  searchMyGit = (value) => {
-    return Rx.DOM.ajax({
-            url: `https://api.github.com/users/${value}`,
-            async: true
-        })
-
-
-}
-
-function searchWikipedia(search) {
-    return Rx.DOM
-        .ajax(`https://api.github.com/users/${search}`)
-        .pluck("response")
-        // .do(x=>console.log(x,'x'))
-        // .map(([,login,,id]) => titles.map((login, id) => ({ title, url: urls[i] })));
-        // Wikipedia has really weird response format o_O
-}
-
-@rxConnect(() => {
-   let  state = {
-        user:'ffff'
+export default class MyView extends React.Component {
+    state = {
+        user:''
     };
 
-    const actions = {
-        search$: new Rx.Subject()
+    searchMyGit = (value) => {
+        return Rx.DOM.ajax({
+            url: `http://samples.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=b1b15e88fa797225412429c1c50c122a1`,
+                async: true
+        })
     }
-    return {}
-    //  Rx.Observable.merge(
-    //     Rx.Observable::ofActions(actions),
-    //
-    //     actions.search$
-    //         .pluck(0)
-    //         .flatMapLatest(searchWikipedia)
-    // )
-})
-
-
-export default class MyView extends React.Component {
 
     searchGitUser = (event) => {
-        event.persist();
         const arr$ =  Rx.Observable.of(event)
             .pluck('target', 'value')
             .distinct()
-            .flatMapLatest(x=>searchMyGit(x))
+            .catch(error => Rx.Observable.of(error))
+            .flatMapLatest(x=>this.searchMyGit(x))
 
         arr$.subscribe(x=>this.setState({user:x.response}));
     }
 
-    state = {
 
-    }
 
     render() {
-        const { articles, search } = this.props;
-        console.log(this.state,'this.state.user');
         return (
             <div>
                 <label>
-                    Wiki search: <input type="text" onChange={ e => search(e.target.value)} />
+                    Wiki search: <input type="text" onInput={this.searchGitUser} />
                 </label>
-
-                { articles && (
-                    <ul>
-                        { articles.map(({ id  }) => (
-                            <li><a href={id}>Hello</a></li>
-                        ) ) }
-                    </ul>
-                )  }
+                <div>
+                    User:{this.state.user}
+                </div>
             </div>
         );
     }
