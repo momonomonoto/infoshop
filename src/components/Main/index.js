@@ -26,8 +26,6 @@ export default class MyView extends React.Component {
         arr$.subscribe(x=>this.setState({user:x.response}));
     }
 
-
-
     render() {
         return (
             <div>
