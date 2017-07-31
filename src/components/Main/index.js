@@ -21,30 +21,40 @@ const  searchMyGit = (value) => {
     return Rx.DOM.ajax({
             url: `https://api.github.com/users/${value}`,
             async: true
-        });
+        })
+
+
+}
+
+function searchWikipedia(search) {
+    return Rx.DOM
+        .ajax(`https://api.github.com/users/${search}`)
+        .pluck("response")
+        // .do(x=>console.log(x,'x'))
+        // .map(([,login,,id]) => titles.map((login, id) => ({ title, url: urls[i] })));
+        // Wikipedia has really weird response format o_O
 }
 
 @rxConnect(() => {
+   let  state = {
+        user:'ffff'
+    };
+
     const actions = {
         search$: new Rx.Subject()
     }
-
-    return Rx.Observable.merge(
-        Rx.Observable::ofActions(actions),
-
-        actions.search$
-            .pluck(0)
-            .flatMapLatest(searchMyGit)
-            .map(articles => ({ articles }))
-    )
+    return {}
+    //  Rx.Observable.merge(
+    //     Rx.Observable::ofActions(actions),
+    //
+    //     actions.search$
+    //         .pluck(0)
+    //         .flatMapLatest(searchWikipedia)
+    // )
 })
 
 
 export default class MyView extends React.Component {
-
-    state = {
-        user:''
-    };
 
     searchGitUser = (event) => {
         event.persist();
@@ -56,21 +66,23 @@ export default class MyView extends React.Component {
         arr$.subscribe(x=>this.setState({user:x.response}));
     }
 
+    state = {
+
+    }
 
     render() {
         const { articles, search } = this.props;
-        console.log(this.state,'this.state');
+        console.log(this.state,'this.state.user');
         return (
             <div>
                 <label>
-                    Wiki search: <input type="text" onChange={this.searchGitUser} />
-                    <p>User:{this.state.user}</p>
+                    Wiki search: <input type="text" onChange={ e => search(e.target.value)} />
                 </label>
 
                 { articles && (
                     <ul>
-                        { articles.map(({ title, url }) => (
-                            <li><a href={url}>{title}</a></li>
+                        { articles.map(({ id  }) => (
+                            <li><a href={id}>Hello</a></li>
                         ) ) }
                     </ul>
                 )  }
