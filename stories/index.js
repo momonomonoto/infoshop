@@ -26,6 +26,7 @@ import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 
 import imageFile from './simple.png';
+import avatarComment from './avatarComment.png';
 import Divider from 'material-ui/Divider';
 
 import Comment from 'material-ui/svg-icons/communication/comment';
@@ -36,6 +37,10 @@ const image = {
     alt: 'my image',
 };
 
+const avatarImage = {
+    src: avatarComment,
+    alt: 'my image',
+};
 
 injectTapEventPlugin();
 
@@ -60,7 +65,7 @@ const CardExampleWithAvatar = () => (
         <IconMenuExampleSimple  />
         <CardHeader
             title="Артем Иванушкин"
-            subtitle="НЛП-тренер"
+            subtitle="Серьёзный НЛП-тренер"
             avatar={image.src}
         />
 
@@ -95,6 +100,32 @@ const CardExampleWithAvatar = () => (
         </CardActions>
     </Card>
 );
+
+const CardComment = () => (
+
+            <Card>
+                <CardHeader
+                    title="Аня"
+                    subtitle="Весёлая девушка"
+                    avatar={avatarImage.src}
+                />
+                <CardText>
+                    Здравствуйте. Могли бы подсказать продолжительность треннинга?
+                </CardText>
+                <CardActions>
+                    <div style={{'display':'flex','flex-direction':'row-reverse','paddingTop':'8px'}} >
+                        <Checkbox
+                            checkedIcon={<ActionFavorite />}
+                            style={{display:'inline-block',width:'100px'}}
+                            uncheckedIcon={<ActionFavoriteBorder />}
+                            label="22"
+                        />
+                    </div>
+                </CardActions>
+
+            </Card>
+)
+
 
 
 const MuiTheme = (storyFn) => (
@@ -141,7 +172,9 @@ storiesOf('Forms', module)
 storiesOf('Goods', module)
     .addDecorator(MuiTheme)
     .add('AppBar', () => <Hello />)
-    .add('SimpleCard',()=><div><CardExampleWithAvatar/></div>);
+    .add('SimpleCard',()=><div><CardExampleWithAvatar/> </div>)
+
+    .add('CardComment',()=><div><CardComment/></div>);
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
