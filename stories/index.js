@@ -30,6 +30,8 @@ import avatarComment from './avatarComment.png';
 import Divider from 'material-ui/Divider';
 
 import Comment from 'material-ui/svg-icons/communication/comment';
+import { withInfo } from '@storybook/addon-info';
+import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 
 
 const image = {
@@ -44,7 +46,9 @@ const avatarImage = {
 
 injectTapEventPlugin();
 
+const stories = storiesOf('Storybook Knobs', module);
 
+stories.addDecorator(withKnobs);
 
 
 const IconMenuExampleSimple = () => (
@@ -74,10 +78,7 @@ const CardExampleWithAvatar = () => (
         </CardMedia>
         <CardTitle title="НЛП-треннинг" subtitle="Тренируем уверенность в себе" />
         <CardText>
-
-            Я сам когда-то прошел этот путь. От неуверенного в себе человека до тренера и консультанта, за плечами которого более 400 проведенных тренингов.
-
-            «Тренинг уверенности» — это тренинг самооценки, свободы и ответственности, самостоятельности и — в любом возрасте — зрелости и взросления. Если Вы намерены стать уверенным в себе человеком, с радостью жду Вас на этом тренинге.
+            {text('Label', 'Я сам когда-то прошел этот путь. От неуверенного в себе человека до тренера и консультанта, за плечами которого более 400 проведенных тренингов.')}
         </CardText>
         <Divider  />
         <CardActions>
@@ -134,21 +135,29 @@ const MuiTheme = (storyFn) => (
     </MuiThemeProvider>
 );
 
+const infoComponent = (storyFn) => {
+    console.log(storyFn,`storyFn`);
+    return withInfo(storyFn())
 
+};
+
+// withInfo('doc string about my component')(() =>
+//     <Component>Click the "?" mark at top-right to view the info.</Component>
+// )
 
 storiesOf('Forms', module)
     .addDecorator(MuiTheme)
-    .add('DatePicker', () => <DatePicker hintText="Controlled Date Input" autoOk={true}/>)
-    .add('TextField', () => <TextField />)
-    .add('NumbertField', () => <TextField type="number" />)
-    .add('Checkbox', () =>
+    .add('DatePicker', withInfo('DataPicker')(() => <DatePicker hintText="Controlled Date Input" autoOk={true}/>))
+    .add('TextField', withInfo('TextField')(() => <TextField />))
+    .add('NumbertField', withInfo('NumbertField')(() => <TextField type="number" />))
+    .add('Checkbox',withInfo('Checkbox')( () =>
         <div>
             <Checkbox label="One" />
             <Checkbox label="Two" />
             <Checkbox label="Three" />
             <Checkbox label="Four" />
-        </div>)
-    .add('RadioButton', () =>
+        </div>))
+    .add('RadioButton',withInfo('RadioButton')( () =>
         <div>
             <RadioButtonGroup name="shipName" defaultSelected="community">
                 <RadioButton
@@ -164,20 +173,12 @@ storiesOf('Forms', module)
                     label="Three"
                 />
             </RadioButtonGroup>
-        </div>)
-
-
+        </div>))
 
 
 storiesOf('Goods', module)
     .addDecorator(MuiTheme)
-    .add('AppBar', () => <Hello />)
-    .add('SimpleCard',()=><div><CardExampleWithAvatar/> </div>)
+    .add('AppBar', withInfo('AppBar')(() => <Hello />))
+    .add('SimpleCard',withInfo('CardExampleWithAvatar')(()=><CardExampleWithAvatar/> ))
+    .add('CardComment',withInfo('CardComment')(()=><CardComment/>));
 
-    .add('CardComment',()=><div><CardComment/></div>);
-
-storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
-
-storiesOf('Button', module)
-  .add('with text', () => <Button onClick={action('clicked')}>Hello Button</Button>)
-  .add('with some emoji', () => <Button onClick={action('clicked')}>😀 😎 👍 💯</Button>);

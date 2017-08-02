@@ -30,6 +30,9 @@
     "react-tap-event-plugin": "^2.0.1"
   },
   "devDependencies": {
+    "@storybook/addon-info": "^3.2.0",
+    "@storybook/addon-knobs": "^3.2.0",
+    "@storybook/react": "^3.0.1",
     "babel": "^6.x",
     "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",
@@ -38,7 +41,6 @@
     "style-loader": "^0.16.1",
     "url-loader": "^0.5.8",
     "webpack": "^2.4.1",
-    "webpack-dev-server": "^2.4.3",
-    "@storybook/react": "^3.0.1"
+    "webpack-dev-server": "^2.4.3"
   }
 }
