@@ -11,7 +11,7 @@ import Divider from 'material-ui/Divider';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import Comment from 'material-ui/svg-icons/communication/comment';
-import avatarComment from './avatarComment.png';
+import avatarComment from './simple.png';
 import FlatButton from 'material-ui/FlatButton';
 
 
@@ -22,7 +22,7 @@ const avatarImage = {
 
 
 export const CardExampleWithAvatar = () => (
-    <Card>
+    <Card >
         <IconMenuExampleSimple  />
         <CardHeader
             title="Артем Иванушкин"
