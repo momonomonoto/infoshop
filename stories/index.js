@@ -12,6 +12,7 @@ import Checkbox from 'material-ui/Checkbox';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 
 import Hello from './Hello';
+import {CardInList} from './CardInList';
 import {CardComment} from './CardComment';
 import {CardExampleWithAvatar} from './CardExampleWithAvatar';
 
@@ -69,11 +70,5 @@ storiesOf('Goods', module)
     .addDecorator(MuiTheme)
     .add('AppBar', withInfo('AppBar')(() => <Hello />))
     .add('SimpleCard',withInfo('CardExampleWithAvatar')(()=><CardExampleWithAvatar/> ))
-    .add('CardComment',withInfo('CardComment')(()=><CardComment/>))
-    .add('as dynamic variables', () => {
-        const name = text('Name', 'Arunoda Susiripala');
-        const age = number('Age', 89);
-
-        const content = `I am ${name} and I'm ${age} years old.`;
-        return (<div>{content}</div>);
-      });
+    .add('CardInList',withInfo('CardInList')(()=><CardInList/> ))
+    .add('CardComment',withInfo('CardComment')(()=><CardComment/>));
