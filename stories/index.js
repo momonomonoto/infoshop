@@ -11,10 +11,12 @@ import TextField from 'material-ui/TextField';
 import Checkbox from 'material-ui/Checkbox';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 
-import Hello from './Hello';
+import AppBar from './AppBar';
 import {CardInList} from './CardInList';
 import {CardComment} from './CardComment';
+import {TableGood} from './TableGood';
 import {CardExampleWithAvatar} from './CardExampleWithAvatar';
+import {Orders} from './Orders';
 
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
@@ -68,7 +70,9 @@ storiesOf('Forms', module)
 
 storiesOf('Goods', module)
     .addDecorator(MuiTheme)
-    .add('AppBar', withInfo('AppBar')(() => <Hello />))
+    .add('AppBar', withInfo('AppBar')(() => <AppBar />))
     .add('SimpleCard',withInfo('CardExampleWithAvatar')(()=><CardExampleWithAvatar/> ))
     .add('CardInList',withInfo('CardInList')(()=><CardInList/> ))
+    .add('TableGood',withInfo('TableGood')(()=><TableGood/> ))
+    .add('Orders',withInfo('Orders')(()=><Orders/> ))
     .add('CardComment',withInfo('CardComment')(()=><CardComment/>));
