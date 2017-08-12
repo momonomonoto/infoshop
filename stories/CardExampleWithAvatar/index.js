@@ -3,7 +3,7 @@
  */
 import React from 'react';
 
-import {IconMenuExampleSimple} from './IconMenuExampleSimple';
+import {IconMenuExampleSimple} from '../IconMenuExampleSimple';
 
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import Checkbox from 'material-ui/Checkbox';

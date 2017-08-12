@@ -6,7 +6,7 @@ import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import Checkbox from 'material-ui/Checkbox';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
-import imageFile from './simple.png';
+import imageFile from '../CardExampleWithAvatar/simple.png';
 import avatarComment from './avatarComment.png';
 
 const avatarImage = {
