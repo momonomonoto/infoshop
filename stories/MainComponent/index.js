@@ -4,10 +4,14 @@
 import React from 'react';
 import {MenuBar} from '../MenuBar';
 import {LeftMenu} from '../LeftMenu';
+import {CardInList} from '../CardInList';
 
 export const MainComponent = () => (
-    <div>
-        <MenuBar />
-        < LeftMenu/>
-    </div>
+        <div>
+            <MenuBar />
+            <div style={{'display':'flex'}}>
+                <LeftMenu/>
+                <CardInList/>
+            </div>
+        </div>
 )
